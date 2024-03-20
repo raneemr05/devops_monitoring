@@ -1,0 +1,47 @@
+version: '3'
+services:
+  prometheus:
+    image: prom/prometheus:latest
+    platform: linux/amd64
+    command:
+      - --storage.tsdb.retention.time=7d
+      - --config.file=/etc/prometheus/prometheus.yml
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus/prometheus.yml:/etc/prometheus/prometheus.yml
+
+  grafana:
+    image: grafana/grafana:latest
+    platform: linux/amd64
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./grafana/dashboards:/etc/grafana/provisioning/dashboards
+      - ./grafana/datasources:/etc/grafana/provisioning/datasources
+
+  node_exporter_1:
+    image: prom/node-exporter:latest
+    platform: linux/amd64
+    ports:
+      - "9100:9100"
+
+  node_exporter_2: 
+    image: prom/node-exporter:latest
+    platform: linux/amd64
+    ports:
+      - "9101:9100"
+  
+  cadvisor:
+    image: google/cadvisor:latest
+    container_name: cadvisor
+    # ports:
+    #   - "8080:8000"
+    volumes:
+      - /:/rootfs:ro
+      - /var/run:/var/run:ro
+      - /sys:/sys:ro
+      - /var/lib/docker/:/var/lib/docker:ro
+      - /dev/disk/:/dev/disk:ro
+    devices:
+      - /dev/kmsg
