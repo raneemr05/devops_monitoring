@@ -36,3 +36,6 @@ You have just launched 5 containers!
         - Grafana user 'rfmoz' kindly created this dashhboard for demonstrating the Grafana with the Node_Exporter containers and Prometheus, more information can be found here https://grafana.com/grafana/dashboards/1860-node-exporter-full/
 4) cAdvisor 
 To analyze resource usage and performance characteristics of running containers 
+https://github.com/google/cadvisor
+https://hub.docker.com/r/google/cadvisor (DEPRECEATED)
+User gcr.io/cadvisor/cadvisor
