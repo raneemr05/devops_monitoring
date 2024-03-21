@@ -12,7 +12,7 @@ Ensure you have Docker/Rancher/Podman or something similar and Docker Compose in
 
 
 ## Exploring
-You have just launched 4 containers!
+You have just launched 5 containers!
 
 1) 2x Node Exporter
     These Node Exporter containers expose lots of system metrics for us to experiment with, you can read more about them here: https://hub.docker.com/r/prom/node-exporter.
@@ -34,3 +34,5 @@ You have just launched 4 containers!
     - Under 'Dashboards',
     - Select 'Node Exporter Full'
         - Grafana user 'rfmoz' kindly created this dashhboard for demonstrating the Grafana with the Node_Exporter containers and Prometheus, more information can be found here https://grafana.com/grafana/dashboards/1860-node-exporter-full/
+4) cAdvisor 
+To analyze resource usage and performance characteristics of running containers 

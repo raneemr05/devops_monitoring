@@ -33,15 +33,15 @@ services:
       - "9101:9100"
   
   cadvisor:
-    image: google/cadvisor:latest
-    container_name: cadvisor
-    # ports:
-    #   - "8080:8000"
+    image: gcr.io/cadvisor/cadvisor:v0.47.0
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+    privileged: true
     volumes:
-      - /:/rootfs:ro
-      - /var/run:/var/run:ro
-      - /sys:/sys:ro
-      - /var/lib/docker/:/var/lib/docker:ro
-      - /dev/disk/:/dev/disk:ro
-    devices:
-      - /dev/kmsg
+      - "/:/rootfs:ro"
+      - "/var/run:/var/run:ro"
+      - "/sys:/sys:ro"
+      - "/var/lib/docker/:/var/lib/docker:ro"
+      - "/dev/disk/:/dev/disk:ro"
+      - "/etc/machine-id:/etc/machine-id:ro"
